@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function Login() { 
+export default function Cadastro() { 
   const [nome, setNome]= useState ('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState(''); 
   const [senhanov, setSenhanov]= useState ('');
- 
 
-  const FazerLogin = () => {
-    if (senha === '123456' && senhanov=== senha) {
-      Alert.alert('Cadastrado com sucesso!');
-    } else {
-      Alert.alert('senha incorreta');
-    }
-  };
-   
+
+const showAlert = ( message: string) => {
+  if (Platform.OS === 'web') {
+    window.alert(` ${message}`);
+  } else {
+    Alert.alert(message);
+  }
+};
+const FazerCadastro = () => {
+  if (!nome || !email || !senha || !senhanov) {
+    showAlert('Preencha todos os campos');
+    return;
+  }
+  if (senha !== senhanov) {
+    showAlert( 'Senha incorreta');
+    return;
+  }
+  showAlert('Cadastrado com sucesso!');
+};
+
+
 
   return (
     <View style={styles.container}>
@@ -62,7 +74,7 @@ export default function Login() {
       />
 
 
-<TouchableOpacity style={styles.button} onPress={FazerLogin}>
+<TouchableOpacity style={styles.button} onPress={FazerCadastro}>
   <Text style={styles.textoButton}>Acessar</Text>
 </TouchableOpacity>
 </View>
@@ -92,7 +104,7 @@ const styles = StyleSheet.create({
   },
   
   input: {
-    width: '100%',
+    width: '80%',
     height: 50,
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -100,13 +112,16 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: '#ccc',
+  marginRight:10,
+
   },
   button: {
-    width: '90%',
-    marginTop: 10,
+    width: '80%',
+    marginTop: 14,
     borderRadius: 100,
     backgroundColor:'#0026A1',
-   padding: 15,
+   padding: 13,
+   marginRight: 12,
   },
 
 textoButton: {

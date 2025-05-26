@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  const FazerLogin = () => {
-    if (email === 'fernanda@gmail.com' && senha === '123456') {
-      Alert.alert('Sucesso', 'Login realizado com sucesso!');
+  const showAlert = ( message: string) => {
+    if (Platform.OS === 'web') {
+      window.alert(` ${message}`);
     } else {
-      Alert.alert('Erro', 'Email ou senha incorretos');
+      Alert.alert(message);
     }
   };
+  const FazerLogin = () => {
+    if (email=== 'fernanda@gmail.com' && senha=== '123456') {
+      showAlert('Login realçizado com sucesso!');
+      return;
+    }
+    else  {
+      showAlert( 'Senha ou email incorretos');
+      return;
+    }
    
+  };
 
   return (
     <View style={styles.container}>
@@ -75,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
    },
   input: {
-    width: '100%',
+    width: '85%',
     height: 50,
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -83,9 +93,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: '#ccc',
+    marginRight: 10,
   },
   button: {
-    width: '90%',
+    width: '80%',
     marginTop: 10,
     borderRadius: 100,
     backgroundColor:'#0026A1',
