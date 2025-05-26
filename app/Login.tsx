@@ -14,7 +14,7 @@ export default function Login() {
   };
   const FazerLogin = () => {
     if (email=== 'fernanda@gmail.com' && senha=== '123456') {
-      showAlert('Login realçizado com sucesso!');
+      showAlert('Login realizado com sucesso!');
       return;
     }
     else  {
