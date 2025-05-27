@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Alert, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Cadastro() { 
@@ -6,7 +6,6 @@ export default function Cadastro() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState(''); 
   const [senhanov, setSenhanov]= useState ('');
-
 
 const showAlert = ( message: string) => {
   if (Platform.OS === 'web') {
@@ -24,15 +23,11 @@ const FazerCadastro = () => {
     showAlert( 'Senha incorreta');
     return;
   }
-  showAlert('Cadastrado com sucesso!');
 };
-
-
-
   return (
     <View style={styles.container}>
       <Image
-        source={require('@/assets/images/logo.png')}
+       source={require('../assets/images/logo.png')}
         style={styles.logo}
       />
 
@@ -72,11 +67,26 @@ const FazerCadastro = () => {
         onChangeText={setSenhanov}
         secureTextEntry
       />
-
-
+      <Text>ou</Text>
+       <View style={styles.buttongf}>
+        <TouchableOpacity onPress={() => {}}>
+          <Image
+            source={require('../assets/images/google.png')}
+            style={styles.gf}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Image
+            source={require('../assets/images/facebook.png')}
+            style={styles.gf} 
+          />
+        </TouchableOpacity>
+        
+      </View>
 <TouchableOpacity style={styles.button} onPress={FazerCadastro}>
   <Text style={styles.textoButton}>Acessar</Text>
 </TouchableOpacity>
+
 </View>
   )}
 
@@ -123,11 +133,20 @@ const styles = StyleSheet.create({
    padding: 13,
    marginRight: 12,
   },
-
 textoButton: {
   color: '#fff',
   fontSize: 18,
   fontWeight: 'semibold',
   textAlign: 'center',
+},
+gf:{
+   width: 50,
+    height:50 ,
+    resizeMode: 'contain',
+  marginHorizontal: 20,
+    
+},
+buttongf:{
+  flexDirection: 'row',
 },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Alert, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Login() {
@@ -27,7 +27,7 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <Image
-        source={require('@/assets/images/logo.png')}
+        source={require('../assets/images/logo.png')}
         style={styles.logo}
       />
 
@@ -50,10 +50,32 @@ export default function Login() {
         onChangeText={setSenha}
         secureTextEntry
       />
-
+<TouchableOpacity onPress={() => {}}>
+  <Text style={styles.esquec}> Esqueceu a senha? </Text>
+</TouchableOpacity>
 <TouchableOpacity style={styles.button} onPress={FazerLogin}>
   <Text style={styles.textoButton}>Acessar</Text>
 </TouchableOpacity>
+<Text>Não tem uma conta?</Text>
+<TouchableOpacity onPress={() => {}}>
+  <Text style={styles.click}> Clique Aqui!</Text>
+</TouchableOpacity>
+<Text>ou</Text>
+       <View style={styles.buttongf}>
+        <TouchableOpacity onPress={() => {}}>
+          <Image
+            source={require('../assets/images/google.png')}
+            style={styles.gf}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Image
+            source={require('../assets/images/facebook.png')}
+            style={styles.gf} 
+          />
+        </TouchableOpacity>
+        
+      </View>
 </View>
   )}
 
@@ -109,4 +131,26 @@ textoButton: {
   fontWeight: 'semibold',
   textAlign: 'center',
 },
+gf:{
+   width: 50,
+    height:50 ,
+    resizeMode: 'contain',
+  marginHorizontal: 20,
+    
+},
+buttongf:{
+  flexDirection: 'row',
+},
+click:{
+color: '#0026A1',
+fontSize: 15,
+},
+esquec:{
+  color: '#0026A1',
+fontSize: 12,
+marginLeft: 200,
+marginBottom: 30,
+marginTop: -15,
+}
+
 });
