@@ -1,3 +1,5 @@
+import { useFonts } from 'expo-font';
+import { Link } from 'expo-router';
 import { useState } from "react";
 import {
   Alert,
@@ -9,18 +11,20 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {useFonts} from 'expo-font';
+import { useRouter } from 'expo-router';
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-
-const [fonte1]= useFonts({
-'LeagueSpartan':require ('../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf'),
+  const [fonte1]= useFonts({
+  'LeagueSpartan':require ('../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf'),
 });
 
   if (!fonte1) {
     return null;
   }
+  const router = useRouter();
   const showAlert = (message: string) => {
     if (Platform.OS === "web") {
       window.alert(` ${message}`);
@@ -31,6 +35,7 @@ const [fonte1]= useFonts({
   const FazerLogin = () => {
     if (email === "fernanda@gmail.com" && senha === "123456") {
       showAlert("Login realizado com sucesso!");
+     router.push('/home');
       return;
     } else {
       showAlert("Senha ou email incorretos");
@@ -70,7 +75,7 @@ const [fonte1]= useFonts({
         secureTextEntry
       />
       <TouchableOpacity onPress={() => {}}>
-        <Text style={styles.esquec}>Esqueceu a senha? </Text>
+        <Text style={styles.esquec}>Esqueceu sua senha? </Text>
         <p></p>
       <p></p>
     
@@ -80,9 +85,9 @@ const [fonte1]= useFonts({
       </TouchableOpacity>
       <Text style={styles.conta}>
         Não tem uma conta?
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.click}> Clique Aqui!</Text>
-        </TouchableOpacity>
+      <View> 
+        <Link style= {styles.click} href= '/Cadastro'>Clique Aqui!</Link>
+      </View>
       </Text>
       <p></p>
       <Text style={styles.ou}> —————————  ou  ————————— </Text>
