@@ -1,5 +1,5 @@
-import { useFonts } from 'expo-font';
-import { Link } from 'expo-router';
+import { useFonts } from "expo-font";
+import { Link } from "expo-router";
 import { useState } from "react";
 import {
   Alert,
@@ -11,15 +11,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useRouter } from 'expo-router';
-
+import { useRouter } from "expo-router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [fonte1]= useFonts({
-  'LeagueSpartan':require ('../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf'),
-});
+  const [fonte1] = useFonts({
+    LeagueSpartan: require("../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf"),
+  });
 
   if (!fonte1) {
     return null;
@@ -35,7 +34,7 @@ export default function Login() {
   const FazerLogin = () => {
     if (email === "fernanda@gmail.com" && senha === "123456") {
       showAlert("Login realizado com sucesso!");
-     router.push('/home');
+      router.push("/home");
       return;
     } else {
       showAlert("Senha ou email incorretos");
@@ -49,13 +48,19 @@ export default function Login() {
         source={require("../assets/images/logo.png")}
         style={styles.logo}
       />
-    <View style={ styles.title}>
-          <Text style={{ fontFamily: 'LeagueSpartan', fontSize: 50, fontWeight: "bold",
-    marginTop: -10,
-    color: "#1A4CF0", }}>
-            Bem-vindo!
-          </Text>
-        </View>
+      <View style={styles.title}>
+        <Text
+          style={{
+            fontFamily: "LeagueSpartan",
+            fontSize: 50,
+            fontWeight: "bold",
+            marginTop: -10,
+            color: "#1A4CF0",
+          }}
+        >
+          Bem-vindo!
+        </Text>
+      </View>
       <Text style={styles.subtitle}>Efetue seu login</Text>
       <p></p>
       <TextInput
@@ -77,20 +82,21 @@ export default function Login() {
       <TouchableOpacity onPress={() => {}}>
         <Text style={styles.esquec}>Esqueceu sua senha? </Text>
         <p></p>
-      <p></p>
-    
+        <p></p>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={FazerLogin}>
         <Text style={styles.textoButton}>Acessar</Text>
       </TouchableOpacity>
       <Text style={styles.conta}>
         Não tem uma conta?
-      <View> 
-        <Link style= {styles.click} href= '/Cadastro'>Clique Aqui!</Link>
-      </View>
+        <View>
+          <Link style={styles.click} href="/Cadastro">
+            Clique Aqui!
+          </Link>
+        </View>
       </Text>
       <p></p>
-      <Text style={styles.ou}> —————————  ou  ————————— </Text>
+      <Text style={styles.ou}> ————————— ou ————————— </Text>
       <View style={styles.buttongf}>
         <TouchableOpacity style={styles.gf} onPress={() => {}}>
           <Image
@@ -153,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: "#0026A1",
     padding: 15,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   textoButton: {
@@ -168,7 +174,6 @@ const styles = StyleSheet.create({
   gicon: {
     width: 65,
     height: 65,
-    
   },
   ficon: {
     width: 73,
@@ -187,13 +192,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 30,
     marginTop: -15,
-    marginLeft:200,
+    marginLeft: 180,
   },
   ou: {
     color: "#030303",
   },
-  conta:{
+  conta: {
     fontSize: 15,
   },
-  
 });

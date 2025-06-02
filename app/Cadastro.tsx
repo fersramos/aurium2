@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Alert,
@@ -10,16 +9,15 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
- 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [senhanov, setSenhanov] =useState("");
- const [fonte] = useFonts ({
-    'LeagueSpartan': require('../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf'),
+  const [senhanov, setSenhanov] = useState("");
+  const [fonte] = useFonts({
+    LeagueSpartan: require("../assets/fonts/leaguespartan/LeagueSpartan-Medium.ttf"),
   });
 
   if (!fonte) {
@@ -48,13 +46,12 @@ export default function Cadastro() {
         source={require("../assets/images/logo.png")}
         style={styles.logo}
       />
-    
-       <View style={ styles.title}>
-      <Text style={{ fontFamily: 'LeagueSpartan', fontSize: 50 }}>
-        Cadastrar
-      </Text>
-    </View>
-  
+
+      <View style={styles.title}>
+        <Text style={{ fontFamily: "LeagueSpartan", fontSize: 50 }}>
+          Cadastrar
+        </Text>
+      </View>
 
       <TextInput
         style={styles.input}
@@ -128,13 +125,10 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    
     fontWeight: "medium",
     marginTop: -10,
     marginBottom: 30,
     color: "#000000",
-    
-   
   },
 
   input: {
@@ -156,7 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0026A1",
     padding: 13,
     marginRight: 12,
-    alignContent: 'center',
+    alignContent: "center",
   },
   textoButton: {
     color: "#fff",
