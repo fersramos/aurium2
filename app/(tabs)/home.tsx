@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
+import * as Progress from "react-native-progress";
 export default function Home() {
   return (
     <View style={styles.container}>
@@ -21,10 +21,8 @@ export default function Home() {
               source={require("../../assets/images/mod1.png")}
             />
             <Text style={styles.mod1}> Módulo 1</Text>
-            <View style= {styles.porcentagem}>
-               
-            </View>
-             <Text>60% concluído</Text>
+            <Progress.Bar progress={0.6} width={146} style={styles.progresso} />
+            <Text>60% concluído</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -34,21 +32,32 @@ export default function Home() {
               source={require("../../assets/images/network.png")}
             />
             <Text style={styles.network}> Buscando network</Text>
-            <View style={styles.porcentagem2}>
-            </View>
+            <Progress.Bar progress={0.6} width={146} style={styles.progresso} />
             <Text>60% completo</Text>
           </View>
         </TouchableOpacity>
-        </View>
-        <TouchableOpacity>
-            <View style= {styles.box3}>
-                <Text style= {styles.outros}> Outros módulos</Text>
-            </View>
-          </TouchableOpacity>
-      
-      <View> 
-        
       </View>
+      <TouchableOpacity>
+        <View style={styles.box3}>
+          <Text style={styles.outros}> Outros módulos</Text>
+          <View style={styles.box4}></View>
+          <Image
+            style={styles.img3}
+            source={require("../../assets/images/box4.png")}
+          />
+        </View>
+      </TouchableOpacity>
+      <Text style={styles.missoes}>Missões Diárias</Text>
+      <TouchableOpacity>
+        <View style={styles.box5}>
+          <Text>🎯      Complete duas missões do módulo 1 </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <View style={styles.box6}>
+          <Text>Complete duas missões do buscando network e consiga mais 8XP </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -56,8 +65,8 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  backgroundColor: '#fff',
-  alignItems: 'center',
+    backgroundColor: "#fff",
+    alignItems: "flex-start",
   },
   title: {
     fontSize: 24,
@@ -83,22 +92,22 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: "#EDF4FE",
-    padding: 5,
+    padding: 7,
     borderRadius: 20,
     width: 160,
     height: 210,
     marginTop: 50,
     borderColor: "#D9D9D9",
-    borderWidth:2,
+    borderWidth: 2,
     marginLeft: 20,
   },
   img: {
-    padding: 2,
+    padding: 7,
     width: 130,
-    height: 150,
+    height: 145,
     alignItems: "center",
-    marginLeft: '7%',
-    marginTop: -30,
+    marginLeft: "7%",
+    marginTop: -20,
   },
   mod1: {
     fontSize: 18,
@@ -109,7 +118,7 @@ const styles = StyleSheet.create({
   },
   box2: {
     backgroundColor: "#EDF4FE",
-    padding: 5,
+    padding: 7,
     borderRadius: 20,
     width: 160,
     height: 210,
@@ -119,55 +128,99 @@ const styles = StyleSheet.create({
     marginLeft: 30,
   },
   img2: {
-    padding: 2,
+    padding: 7,
     width: 130,
     height: 150,
     alignItems: "center",
     marginTop: -20,
-    marginLeft: '7%',
+    marginLeft: "7%",
   },
   network: {
     fontSize: 15,
     fontWeight: "bold",
     marginTop: -15,
     alignItems: "center",
-    marginLeft: '3%',
+    marginLeft: "3%",
   },
   boxes: {
-   flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: '90%', 
-  marginTop: 20,
-
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+    marginTop: 0,
+    alignSelf: "center",
+    marginRight: 70,
   },
-  porcentagem: {
-       height: 8,
-    backgroundColor: '#007AFF', 
-    borderRadius: 10,
-    marginTop: 9,
-    
 
-  },
-   porcentagem2: {
-   height: 8,
-    backgroundColor: '#007AFF', 
-    borderRadius: 10,
-    marginTop: 9,
-   },
-   box3:{
-backgroundColor: "#EDF4FE",
+  box3: {
+    backgroundColor: "#EDF4FE",
     padding: 7,
     borderRadius: 20,
-    width: 343,
+    width: 388,
     height: 79,
-    marginTop: 50,
+    marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-   alignSelf: 'center',
-   },
-   outros:{
-fontSize: 20,
-fontWeight: 'bold',
-alignSelf: 'center',
-   },
-})
+    alignSelf: "center",
+    left: 15,
+  },
+  outros: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  progresso: {
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  box4: {
+    backgroundColor: "#DCEAFD",
+    padding: 7,
+    borderRadius: 20,
+    width: 80,
+    height: 79,
+    borderColor: "#D9D9D9",
+    borderWidth: 2,
+    top: 0,
+    left: 308,
+    alignSelf: "flex-end",
+    position: "absolute",
+  },
+  img3: {
+    width: 70,
+    height: 70,
+    alignSelf: "flex-end",
+    position: "absolute",
+    left: 313,
+    top: 0,
+  },
+  missoes: {
+    fontSize: 20,
+    alignSelf: "flex-start",
+    fontWeight: "bold",
+    top: 10,
+    left: 9,
+  },
+  box5: {
+    backgroundColor: "#FFF9F9",
+    padding: 7,
+    borderRadius: 20,
+    width: 388,
+    height: 41,
+    marginTop: 40,
+    borderColor: "#D9D9D9",
+    borderWidth: 2,
+    alignSelf: "flex-start",
+    left: 5,
+  },
+  box6: {
+      backgroundColor: "#FFF9F9",
+    padding: 7,
+    borderRadius: 20,
+    width: 388,
+    height: 79,
+    marginTop: 20,
+    borderColor: "#D9D9D9",
+    borderWidth: 2,
+    alignSelf: "flex-start",
+    left: 5,
+  }
+});
