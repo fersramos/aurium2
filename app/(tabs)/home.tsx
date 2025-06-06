@@ -14,7 +14,7 @@ export default function Home() {
         Continue aniquilando seus objetivos 💪
       </Text>
       <View style={styles.boxes}>
-        <TouchableOpacity>
+        <TouchableOpacity >
           <View style={styles.box}>
             <Image
               style={styles.img}
@@ -50,12 +50,21 @@ export default function Home() {
       <Text style={styles.missoes}>Missões Diárias</Text>
       <TouchableOpacity>
         <View style={styles.box5}>
-          <Text>🎯      Complete duas missões do módulo 1 </Text>
+          <Text style={styles.textbox}>🎯 Complete duas missões do módulo 1 </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity>
         <View style={styles.box6}>
-          <Text>Complete duas missões do buscando network e consiga mais 8XP </Text>
+          <Text style={styles.textbox}>
+           📚 Estude por 15 minutos
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <View style={styles.box7}>
+          <Text style={styles.textbox}>
+          🎯 Complete duas missões do "Buscando network"
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    marginLeft: 20,
+      alignItems: "center", 
   },
   img: {
     padding: 7,
@@ -111,10 +120,9 @@ const styles = StyleSheet.create({
   },
   mod1: {
     fontSize: 18,
-    fontWeight: "bold",
-    marginTop: -15,
-    alignItems: "center",
-    marginLeft: 24,
+  fontWeight: "bold",
+  textAlign: "center",
+  marginTop: 10,
   },
   box2: {
     backgroundColor: "#EDF4FE",
@@ -126,6 +134,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     marginLeft: 30,
+    alignItems: "center",
   },
   img2: {
     padding: 7,
@@ -137,31 +146,30 @@ const styles = StyleSheet.create({
   },
   network: {
     fontSize: 15,
-    fontWeight: "bold",
-    marginTop: -15,
-    alignItems: "center",
-    marginLeft: "3%",
+  fontWeight: "bold",
+  marginTop: 10,
+  textAlign: "center",
   },
   boxes: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "80%",
-    marginTop: 0,
-    alignSelf: "center",
-    marginRight: 70,
+     flexDirection: "row",
+  justifyContent: "space-between", 
+  alignItems: "center",          
+  marginTop: 0,
+  alignSelf: "center",
   },
 
   box3: {
     backgroundColor: "#EDF4FE",
     padding: 7,
     borderRadius: 20,
-    width: 388,
+    width: 370,
     height: 79,
     marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    alignSelf: "center",
-    left: 15,
+    alignSelf: 'center',
+    alignContent: 'center',
+    left: 25,
   },
   outros: {
     fontSize: 20,
@@ -180,8 +188,8 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     top: 0,
-    left: 308,
-    alignSelf: "flex-end",
+    left: 290,
+    alignSelf: 'center',
     position: "absolute",
   },
   img3: {
@@ -189,7 +197,7 @@ const styles = StyleSheet.create({
     height: 70,
     alignSelf: "flex-end",
     position: "absolute",
-    left: 313,
+    left: 297,
     top: 0,
   },
   missoes: {
@@ -203,24 +211,42 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF9F9",
     padding: 7,
     borderRadius: 20,
-    width: 388,
+    width: 370,
     height: 41,
     marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    alignSelf: "flex-start",
-    left: 5,
+    alignSelf: "center",
+    left: 25,
   },
   box6: {
-      backgroundColor: "#FFF9F9",
+    backgroundColor: "#FFF9F9",
     padding: 7,
     borderRadius: 20,
-    width: 388,
-    height: 79,
+    width: 370,
+    height: 41,
     marginTop: 20,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    alignSelf: "flex-start",
-    left: 5,
+    alignSelf: 'center',
+    left: 25,
+  },
+  box7:{
+backgroundColor: "#FFF9F9",
+    padding: 7,
+    borderRadius: 20,
+    width: 370,
+    height: 41,
+    marginTop: 20,
+    borderColor: "#D9D9D9",
+    borderWidth: 2,
+    alignSelf: 'center',
+    left: 25,
+  },
+  textbox:{
+ alignSelf: 'center',
+  },
+  button1:{
+
   }
 });
