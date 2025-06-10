@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Progress from "react-native-progress";
-import { Link } from "expo-router";
 export default function Home() {
   return (
     <View style={styles.container}>
@@ -15,7 +14,7 @@ export default function Home() {
         Continue aniquilando seus objetivos 💪
       </Text>
       <View style={styles.boxes}>
-        <TouchableOpacity >
+        <TouchableOpacity>
           <View style={styles.box}>
             <Image
               style={styles.img}
@@ -248,7 +247,5 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   button1: {},
-  click:{
-
-  },
+  click: {},
 });
