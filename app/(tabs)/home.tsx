@@ -1,6 +1,18 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Progress from "react-native-progress";
+import { useRouter } from "expo-router";
 export default function Home() {
+  const router = useRouter();
+  const Mod1 = () => {
+    router.push("/(tabs)/modulos");
+    return;
+     };
+    const Modulo1 = ()=>{
+router.push("/mod1");
+return;
+    };
+    
+ 
   return (
     <View style={styles.container}>
       <View style={styles.lateral}>
@@ -14,7 +26,7 @@ export default function Home() {
         Continue aniquilando seus objetivos 💪
       </Text>
       <View style={styles.boxes}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={Modulo1}>
           <View style={styles.box}>
             <Image
               style={styles.img}
@@ -37,7 +49,7 @@ export default function Home() {
           </View>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={Mod1}>
         <View style={styles.box3}>
           <Text style={styles.outros}> Outros módulos</Text>
           <View style={styles.box4}></View>
@@ -75,7 +87,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "flex-start",
+    alignItems: "center",
+    padding: 8,
   },
   title: {
     fontSize: 24,
@@ -98,6 +111,7 @@ const styles = StyleSheet.create({
   },
   lateral: {
     flexDirection: "row",
+    
   },
   box: {
     backgroundColor: "#EDF4FE",
@@ -108,7 +122,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    alignItems: "center",
+   
   },
   img: {
     padding: 7,
@@ -134,7 +148,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     marginLeft: 30,
-    alignItems: "center",
+    
   },
   img2: {
     padding: 7,
@@ -152,7 +166,6 @@ const styles = StyleSheet.create({
   },
   boxes: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     marginTop: 0,
     alignSelf: "center",
@@ -168,8 +181,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     alignSelf: "center",
-    alignContent: "center",
-    left: 25,
+    
   },
   outros: {
     fontSize: 20,
@@ -188,7 +200,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     top: 0,
-    left: 290,
+    left: 289,
     alignSelf: "center",
     position: "absolute",
   },
@@ -217,7 +229,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     alignSelf: "center",
-    left: 25,
+    
   },
   box6: {
     backgroundColor: "#FFF9F9",
@@ -229,7 +241,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     alignSelf: "center",
-    left: 25,
+   
   },
   box7: {
     backgroundColor: "#FFF9F9",
@@ -241,7 +253,7 @@ const styles = StyleSheet.create({
     borderColor: "#D9D9D9",
     borderWidth: 2,
     alignSelf: "center",
-    left: 25,
+  
   },
   textbox: {
     alignSelf: "center",

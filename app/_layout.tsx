@@ -6,6 +6,7 @@ export default function RootLayout() {
       <Stack.Screen name="Login" options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" options={{ headerShown: false}} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="mod1" options={{headerShown: false}}/>
     </Stack>
   );
 }
