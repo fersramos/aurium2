@@ -76,9 +76,10 @@ export default function modulos() {
 }
 const styles = StyleSheet.create({
   container: {
-    padding:8,
+    padding:7,
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor:"#FFFFFF",
   },
   pesquisa: {
     width: 321,

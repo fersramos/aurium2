@@ -19,6 +19,7 @@ export default function modulo1() {
       <TouchableOpacity onPress={Mod1}>
         <View style={styles.box1}>
           <Text style={styles.mods}> Outros módulos</Text>
+          <Text style={styles.network}>Como fazer networking?</Text>
           <View style={styles.box2}></View>
           <Image
             style={styles.img1}
@@ -132,6 +133,11 @@ const styles = StyleSheet.create({
   mods: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  network:{
+    fontSize: 15,
+    fontWeight: 'semibold',
+    
   },
   box2: {
     backgroundColor: "#DCEAFD",
