@@ -1,5 +1,4 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Progress from "react-native-progress";
 export default function perfil() {
   return (
     <View style={styles.container}>

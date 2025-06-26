@@ -1,5 +1,28 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-export default function Home() {
+import { Image, StyleSheet, Text, TouchableOpacity, View,Animated } from "react-native";
+import {useRef, useState} from 'react';
+import React from 'react';
+const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto})=> {
+      const boxAnimado = useRef (new Animated.Value (41)).current;
+      const expandido = id ===ativoId;
+      React.useEffect(()=>{
+              Animated.timing (boxAnimado, {
+                toValue: expandido? 80:40,
+                duration:300,
+                useNativeDriver: false, }).start ();
+            }, [expandido]);
+        return(
+              <TouchableOpacity onPress={()=> setAtivoId (expandido? null:id)}>
+                <Animated.View style={[styles.box1, {height:boxAnimado}]}>
+                  <Text style={styles.text1}>
+                  {expandido ? textoaberto : textofechado} 
+                  </Text>
+                </Animated.View>
+              </TouchableOpacity>
+            )}
+export default function Premios() {
+const [ativoId, setAtivoId]= useState (null);
+
+ const boxes= [1,2,3];
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Conquistas</Text>

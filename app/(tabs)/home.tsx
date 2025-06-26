@@ -1,6 +1,28 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity,Animated, View } from "react-native";
 import * as Progress from "react-native-progress";
+import {useRef, useState} from 'react';
 import { useRouter } from "expo-router";
+ const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto})=> {
+      const boxAnimado = useRef (new Animated.Value (41)).current;
+      const expandido = id ===ativoId;
+
+      React.useEffect(()=>{
+        Animated.timing (boxAnimado, {
+          toValue: expandido? 80:40,
+          duration:300,
+          useNativeDriver: false, }).start ();
+      }, [expandido]);
+
+      return(
+        <TouchableOpacity onPress={()=> setAtivoId (expandido? null:id)}>
+          <Animated.View style={[styles.box5, {height:boxAnimado}]}>
+            <Text style={styles.textbox}>
+            {expandido ? textoaberto : textofechado} 
+            </Text>
+          </Animated.View>
+        </TouchableOpacity>
+      )}
 export default function Home() {
   const router = useRouter();
   const Mod1 = () => {
@@ -11,8 +33,9 @@ export default function Home() {
 router.push("/mod1");
 return;
     };
-    
- 
+ const [ativoId, setAtivoId]= useState (null);
+
+ const boxes= [1,2,3];
   return (
     <View style={styles.container}>
       <View style={styles.lateral}>
@@ -25,29 +48,21 @@ return;
       <Text style={styles.subtitle}>
         Continue aniquilando seus objetivos 💪
       </Text>
-      <View style={styles.boxes}>
+      <View>
         <TouchableOpacity onPress={Modulo1}>
           <View style={styles.box}>
             <Image
               style={styles.img}
               source={require("../../assets/images/mod1.png")}
             />
-            <Text style={styles.mod1}> Módulo 1</Text>
-            <Progress.Bar progress={0.6} width={146} style={styles.progresso} />
-            <Text>60% concluído</Text>
+            <Text style={styles.mod1}> COMPLETAR MÓDULO 1</Text>
+            <View style={styles.lateral}>
+            <Progress.Bar progress={0.6} width={280} style={styles.progresso} />
+            <Text style={styles.porcento}>60%</Text>
+            </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.box2}>
-            <Image
-              style={styles.img2}
-              source={require("../../assets/images/network.png")}
-            />
-            <Text style={styles.network}> Buscando network</Text>
-            <Progress.Bar progress={0.6} width={146} style={styles.progresso} />
-            <Text>60% completo</Text>
-          </View>
-        </TouchableOpacity>
+        
       </View>
       <TouchableOpacity onPress={Mod1}>
         <View style={styles.box3}>
@@ -60,25 +75,23 @@ return;
         </View>
       </TouchableOpacity>
       <Text style={styles.missoes}>Missões Diárias</Text>
-      <TouchableOpacity>
-        <View style={styles.box5}>
-          <Text style={styles.textbox}>
-            🎯 Complete duas missões do módulo 1{" "}
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <View style={styles.box6}>
-          <Text style={styles.textbox}>📚 Estude por 15 minutos</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <View style={styles.box7}>
-          <Text style={styles.textbox}>
-            🎯 Complete duas missões do "Buscando network"
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <Box
+      id={1}
+      ativoId={ativoId}
+      setAtivoId={setAtivoId}
+      textofechado='🎯 Complete duas missões do módulo 1'
+      textoaberto= 'Complete mais 2 missões do módulo 1 pra conseguir 23xp'/>
+      <Box
+       id={2}
+      ativoId={ativoId}
+      setAtivoId={setAtivoId}
+      textofechado='📚 Estude por 15 minutos'
+      textoaberto= 'Estude por 15 minutos e consiga mais 17xp'/>
+      <Box  id={3}
+      ativoId={ativoId}
+      setAtivoId={setAtivoId}
+      textofechado='🎯 Fique entre os top 3 no ranking '
+      textoaberto= 'Fique entre os top 3 do ranking e consiga 3 vidas recarregadas '/>
     </View>
   );
 }
@@ -117,18 +130,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#EDF4FE",
     padding: 7,
     borderRadius: 20,
-    width: 160,
+    width: 333,
     height: 210,
     marginTop: 50,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-   
+   alignSelf: 'center',
   },
   img: {
     padding: 7,
-    width: 130,
-    height: 145,
-    alignItems: "center",
+    width: 200,
+    height: 150,
+    alignSelf:'center',
     marginLeft: "7%",
     marginTop: -20,
   },
@@ -138,38 +151,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10,
   },
-  box2: {
-    backgroundColor: "#EDF4FE",
-    padding: 7,
-    borderRadius: 20,
-    width: 160,
-    height: 210,
-    marginTop: 50,
-    borderColor: "#D9D9D9",
-    borderWidth: 2,
-    marginLeft: 30,
-    
-  },
-  img2: {
-    padding: 7,
-    width: 130,
-    height: 150,
-    alignItems: "center",
-    marginTop: -20,
-    marginLeft: "7%",
-  },
-  network: {
-    fontSize: 15,
-    fontWeight: "bold",
-    marginTop: 10,
-    textAlign: "center",
-  },
-  boxes: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 0,
-    alignSelf: "center",
-  },
+
 
   box3: {
     backgroundColor: "#EDF4FE",
@@ -225,39 +207,21 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: 370,
     height: 41,
-    marginTop: 40,
+    marginTop: 20,
     borderColor: "#D9D9D9",
     borderWidth: 2,
     alignSelf: "center",
     
   },
-  box6: {
-    backgroundColor: "#FFF9F9",
-    padding: 7,
-    borderRadius: 20,
-    width: 370,
-    height: 41,
-    marginTop: 20,
-    borderColor: "#D9D9D9",
-    borderWidth: 2,
-    alignSelf: "center",
-   
-  },
-  box7: {
-    backgroundColor: "#FFF9F9",
-    padding: 7,
-    borderRadius: 20,
-    width: 370,
-    height: 41,
-    marginTop: 20,
-    borderColor: "#D9D9D9",
-    borderWidth: 2,
-    alignSelf: "center",
-  
-  },
   textbox: {
     alignSelf: "center",
+    fontSize: 18,
   },
   button1: {},
   click: {},
+  porcento:{
+textAlign: 'right',
+marginTop: 10,
+left: 2,
+  },
 });
