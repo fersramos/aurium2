@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  ScrollView,
 } from "react-native";
 import * as Progress from "react-native-progress";
 import { useRouter } from "expo-router";
@@ -18,6 +19,7 @@ export default function modulos() {
       
     }
   return (
+    <ScrollView>
     <View style={styles.container}>
       <TextInput
         style={styles.pesquisa}
@@ -72,6 +74,7 @@ export default function modulos() {
         </View>
       </TouchableOpacity>  
     </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({

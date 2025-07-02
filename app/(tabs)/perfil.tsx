@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, ScrollView, TouchableOpacity, View } from "react-native";
 export default function perfil() {
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.box1}>
         <View style={styles.boxes}>
@@ -25,21 +26,22 @@ export default function perfil() {
           <Text style={styles.text3}>MÓDULOS COMPLETOS </Text>
         </View>
         <View style={styles.box3}>
-          <Text  style={styles.text2}>50%</Text>
+          <Text style={styles.text2}>50%</Text>
           <Text style={styles.text3}>CONQUISTAS </Text>
         </View>
       </View>
       <View style={styles.boxes}>
         <View style={styles.box4}>
-          <Text  style={styles.text2}>5º</Text>
+          <Text style={styles.text2}>5º</Text>
           <Text style={styles.text3}>ESTRATEGISTA MESTRE </Text>
         </View>
         <View style={styles.box5}>
-          <Text  style={styles.text2}>150</Text>
+          <Text style={styles.text2}>150</Text>
           <Text style={styles.text3}>DIAS NO AURIUM </Text>
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    left:5,
+    left: 5,
   },
   box4: {
     backgroundColor: "#FFFFFF",
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    right:5,
+    right: 5,
   },
   box5: {
     backgroundColor: "#FFFFFF",
@@ -121,16 +123,16 @@ const styles = StyleSheet.create({
     marginTop: 40,
     borderColor: "#D9D9D9",
     borderWidth: 2,
-    left:5,
+    left: 5,
   },
-  text2:{
-textAlign: 'center',
-fontWeight: 'bold',
-fontSize: 50,
+  text2: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 50,
   },
-  text3:{
-textAlign: 'center',
-fontWeight: 'semibold',
-fontSize: 20,
+  text3: {
+    textAlign: "center",
+    fontWeight: "semibold",
+    fontSize: 20,
   },
 });

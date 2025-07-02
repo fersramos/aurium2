@@ -1,10 +1,18 @@
+// tsconfig.json
 {
-  "compilerOptions": {},
   "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts", // Garanta que este esteja aqui
+    "react-navigation-env.d.ts" // E este também!
   ]
 }

@@ -1,9 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity,Animated, View } from "react-native";
+import { Image, ScrollView ,StyleSheet, Text, TouchableOpacity,Animated, View } from "react-native";
 import * as Progress from "react-native-progress";
 import {useRef, useState} from 'react';
 import { useRouter } from "expo-router";
- const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto})=> {
+type BoxProps = {
+  id: number;
+  ativoId: number | null;
+  setAtivoId:  (id: number | null) => void;
+  textofechado: string;
+  textoaberto: string;
+};
+ const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto}:BoxProps)=> {
       const boxAnimado = useRef (new Animated.Value (41)).current;
       const expandido = id ===ativoId;
 
@@ -33,10 +40,11 @@ export default function Home() {
 router.push("/mod1");
 return;
     };
- const [ativoId, setAtivoId]= useState (null);
+ const [ativoId, setAtivoId]= useState<number | null>(null);
 
  const boxes= [1,2,3];
   return (
+    <ScrollView >
     <View style={styles.container}>
       <View style={styles.lateral}>
         <Image
@@ -93,6 +101,7 @@ return;
       textofechado='🎯 Fique entre os top 3 no ranking '
       textoaberto= 'Fique entre os top 3 do ranking e consiga 3 vidas recarregadas '/>
     </View>
+    </ScrollView>
   );
 }
 
@@ -130,7 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#EDF4FE",
     padding: 7,
     borderRadius: 20,
-    width: 333,
+    width: 370,
     height: 210,
     marginTop: 50,
     borderColor: "#D9D9D9",

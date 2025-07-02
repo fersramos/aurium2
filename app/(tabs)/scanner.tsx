@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, {useState} from 'react';
 export default function Scanner () {
   const [flash, setFlash]= useState< 'off'|'auto'|'on'>('off');
@@ -21,6 +21,7 @@ const flashIcon=()=>{
   }
 }
   return (
+<ScrollView>
     <View style={styles.container}>
       <Text style={styles.title}> SCANNER DE DOCUMENTO</Text>
       <Text style={styles.text}> Leia um código QR ou um documento físico</Text>
@@ -39,6 +40,7 @@ const flashIcon=()=>{
       </View>
       </View>
     </View>
+    </ScrollView>
   );
 }
 

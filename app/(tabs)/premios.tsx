@@ -1,29 +1,20 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View,Animated } from "react-native";
-import {useRef, useState} from 'react';
+import { Image, StyleSheet, ScrollView, Text, TouchableOpacity, View,Animated } from "react-native";
 import React from 'react';
-const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto})=> {
-      const boxAnimado = useRef (new Animated.Value (41)).current;
-      const expandido = id ===ativoId;
-      React.useEffect(()=>{
-              Animated.timing (boxAnimado, {
-                toValue: expandido? 80:40,
-                duration:300,
-                useNativeDriver: false, }).start ();
-            }, [expandido]);
-        return(
-              <TouchableOpacity onPress={()=> setAtivoId (expandido? null:id)}>
-                <Animated.View style={[styles.box1, {height:boxAnimado}]}>
-                  <Text style={styles.text1}>
-                  {expandido ? textoaberto : textofechado} 
-                  </Text>
-                </Animated.View>
-              </TouchableOpacity>
-            )}
+import {useState,useRef} from 'react';
+type BoxProps = {
+  id: number;
+  ativoId: number | null;
+  setAtivoId:  (id: number | null) => void;
+  textofechado: string;
+  textoaberto: string;
+  imagem: any;
+};
+const Box= ({id, ativoId, setAtivoId, textofechado, textoaberto, imagem}:BoxProps)=> {
+}
 export default function Premios() {
-const [ativoId, setAtivoId]= useState (null);
 
- const boxes= [1,2,3];
-  return (
+return (
+    <ScrollView>
     <View style={styles.container}>
       <Text style={styles.title}>Conquistas</Text>
       <View style={styles.boxes}>
@@ -37,7 +28,7 @@ const [ativoId, setAtivoId]= useState (null);
             </View>
             <Text style={styles.text1}> MESTRE DOS NEGÓCIOS</Text>
           </View>
-        </TouchableOpacity>
+       </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.box2}>
             <View style={styles.box21}>
@@ -160,6 +151,7 @@ const [ativoId, setAtivoId]= useState (null);
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
@@ -357,6 +349,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     alignSelf: "center",
     top: 25,
+    
   },
   box7: {
     backgroundColor: "#D8D8D8",
@@ -368,6 +361,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     alignSelf: "center",
     top: 30,
+
   },
   box8: {
     backgroundColor: "#D8D8D8",

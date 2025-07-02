@@ -7,6 +7,10 @@ export default function modulo1() {
     router.push("/(tabs)/modulos");
     return;
   };
+  const Missao = () => {
+    router.push('../missao');
+    return;
+  };
   return (
     <View style={styles.container}>
       <View style={styles.seila}>
@@ -34,7 +38,7 @@ export default function modulo1() {
         />
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress ={Missao}>
         <View>
           <Image
             style={styles.circle1}
